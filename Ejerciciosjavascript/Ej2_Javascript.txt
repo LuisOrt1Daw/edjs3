@@ -1,0 +1,95 @@
+class Hospital {
+  constructor(nombre, ciudad, listadoPacientes) {
+    this.nombre = nombre;
+    this.ciudad = ciudad;
+    this.listadoPacientes = listadoPacientes;
+  }
+  getNombre() {
+    return this.nombre;
+  }
+  setNombre(nombre) {
+    this.nombre = nombre;
+  }
+  getCiudad() {
+    return this.ciudad;
+  }
+  setCiudad(ciudad) {
+    this.ciudad = ciudad;
+  }
+  mostrarListadoPacientes() {
+    console.log('Paciente: ' + this.nombre + ' Ciudad: ' + this.ciudad);
+    for (let i = 0; i < listadoPacientes.length; i++) {
+      let paciente = this.ListadoPacientes[i];
+      paciente.mostrarListadoTratamientos();
+    }
+  }
+}
+class Paciente {
+  constructor(DNI, nombre, enfermedad, listadoTratamientos) {
+    this.DNI = DNI;
+    this.nombre = nombre;
+    this.enfermedad = enfermedad;
+    this.listadoTratamientos = listadoTratamientos;
+  }
+  getDNI() {
+    return this.DNI;
+  }
+  setDNI(DNI) {
+    this.DNI = DNI;
+  }
+  getNombre() {
+    return this.nombre;
+  }
+  setNombre(nombre) {
+    this.nombre = nombre;
+  }
+  getEnfermedad() {
+    return this.enfermedad;
+  }
+  setEnfermedad(enfermedad) {
+    this.enfermedad = enfermedad;
+  }
+  mostrarListadoTratamientos() {
+    console.log('DNI: ' + this.DNI + 'Paciente: ' + this.nombre + ' Enfermedad: ' + this.enfermedad);
+  }
+}
+
+
+class Tratamiento {
+  constructor(nombre, pauta, indicaciones) {
+    this.nombre = nombre;
+    this.pauta = pauta;
+    this.indicaciones = indicaciones;
+  }
+  getNombre() {
+    return this.nombre;
+  }
+  setNombre(nombre) {
+    this.nombre = nombre;
+  }
+  getPauta() {
+    return this.pauta;
+  }
+  setPauta(pauta) {
+    this.pauta = pauta;
+  } 
+}
+let ListadoPacientes = new Array();
+ListadoPacientes[0] = new Paciente('Luis','Alicante');
+ListadoPacientes[1] = new Paciente('German','Alicante');
+ListadoPacientes[2] = new Paciente('David','Alicante');
+ListadoPacientes[3] = new Paciente('Maria','Alicante');
+ListadoPacientes[4] = new Paciente('Esteve','Alicante');
+let listadoTratamientos = new Array();
+listadoTratamientos[0] = new Tratamiento('20083546S','Luis','Alergia' );
+listadoTratamientos[1] = new Tratamiento('30083546D','German','Gripe');
+listadoTratamientos[2] = new Tratamiento('40083546F','David','Gripe');
+listadoTratamientos[3] = new Tratamiento('50083546G','Maria','Resfriado');
+listadoTratamientos[4] = new Tratamiento('600835467','Esteve','Cancer');
+let indicaciones = new Array();
+indicaciones [0] = new Tratamiento('Aerius'+'Una al dia');
+indicaciones [1] = new Tratamiento('Frenadol'+'Una pastilla cada 8 horas');
+indicaciones [2] = new Tratamiento('Frenadol'+'Una pastilla cada 8 horas');
+indicaciones [3] = new Tratamiento('Ibudol'+'Un sobre cada 12 horas');
+indicaciones [4] = new Tratamiento('Quimio'+'Una sesion cada dos meses');
+Hospital.mostrarListadoPacientes();

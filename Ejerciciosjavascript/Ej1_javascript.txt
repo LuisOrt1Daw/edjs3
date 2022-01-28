@@ -1,0 +1,89 @@
+class Aeropuerto {
+  constructor(nombre, ciudad, listadoVuelosDiarios) {
+    this.nombre = nombre;
+    this.ciudad = ciudad;
+    this.listadoVuelosDiarios = listadoVuelosDiarios;
+  }
+  getNombre() {
+    return this.nombre;
+  }
+  setNombre() {
+    this.nombre = nombre;
+  }
+  getCiudad() {
+    return this.ciudad;
+  }
+  setCiudad() {
+    this.ciudad = ciudad;
+  }
+  mostrarListadoVuelosDiarios() {
+    console.log('Nombre: ' + this.nombre + ' Ciudad: ' + this.ciudad);
+    for (let i = 0; i < listadoVuelosDiarios.length; i++) {
+      this.listadoVuelosDiarios[i].mostrarVuelo();
+    }
+  }
+  comprobarVuelos() {
+    var f=false;
+      for(var i=0;i<this.listadoVuelosDiarios.length;i++){
+          if(!this.listadoVuelosDiarios[i].comprobarHoras()){
+              f=true;
+          }
+      }
+      if(f){
+          return true;
+      }else{
+          return false;
+      }
+  }
+}
+class Vuelo {
+  constructor(codigo, horaLlegada, horaSalida) {
+    this.codigo = codigo;
+    this.horaLlegada = horaLlegada;
+    this.horaSalida = horaSalida;
+  }
+  getCodigo() {
+    return this.codigo;
+  }
+  setCodigo() {
+    this.codigo = codigo;
+  }
+  getHoraLlegada() {
+    return this.horaLlegada;
+  }
+  modificarHoraLlegada(nuevaHora) {
+    this.horaLlegada = nuevaHora
+  }
+  getHoraSalida() {
+    return this.horaSalida;
+  }
+  modificarHoraSalida(nuevaHora) {
+    this.horaSalida = nuevaHora
+  }
+  mostrarVuelo() {
+    console.log('Codigo: ' + this.codigo + '  Hora de llegada: ' + this.horaLlegada + '  Hora de salida: ' + this.horaSalida);
+  }
+
+  comprobarHoras() {
+    if (this.horaSalida >= this.horaLlegada) {
+      return false;
+   } else if (this.horaSalida < this.horaLlegada) {
+      return true;
+    }
+  }
+}
+
+
+let listadoVuelosDiarios = new Array();
+listadoVuelosDiarios[0] = new Vuelo('1' , 7.30 ,  7.00 );
+listadoVuelosDiarios[1] = new Vuelo('2' , 11.00 ,  10.00 );
+listadoVuelosDiarios[2] = new Vuelo('3 ', 13.00 ,  11.30 );
+listadoVuelosDiarios[3] = new Vuelo('4 ', 14.00 , 13.15 );
+
+let aeropuerto = new Aeropuerto('Torrellano', 'Alicante', listadoVuelosDiarios)
+aeropuerto.mostrarListadoVuelosDiarios();
+
+let CompruebaVuelos =aeropuerto.comprobarVuelos();
+  if(CompruebaVuelos){
+      console.log("Existen vuelos que no son válidos")
+  }
